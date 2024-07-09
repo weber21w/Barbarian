@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<gfx-xform version="1">
+	<input file="../resources/gfx/gui-title.png" type="png" tile-width="320" tile-height="200" />
+	<output file="../data/gfx-compressed/gui-title.inc" type="2bpp" isBackgroundTiles="false">
+		<palette file="../resources/palette/player-palette.png" var-name="graphicsPalette" maxColors="4" exportPalette="false" transparent-color="199"/>
+		<tiles var-name="gui_title"/>
+		<maps pointers-size="8">
+			<map var-name="skipped-map" top="0" left="0" width="1" height="1" skip-output="true"/>
+		</maps>
+	</output>
+</gfx-xform>

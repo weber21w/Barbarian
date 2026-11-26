@@ -1,10 +1,10 @@
 {
   "passed": true,
   "verification_date": "2026-11-25",
-  "method": "Source-only Git index export to a fresh absolute path, make verify, complete UZE SHA-256 comparison",
-  "external_project_file_reads": [],
-  "source_files": 231,
-  "source_bytes": 1064858,
+  "method": "Fresh source-only Git index export under uzebox-master/demos/Barbarian; make verify from default/ using the existing ../../../bin/packrom",
+  "verified_source_tree": "cdafad20b3df6b50b50f265cee77b21ce0af689f",
+  "packrom_sha256": "d710b629db35709aba3e8d5e3854b657392e555ff3a1e4a08cb9aa599ec520d9",
+  "host_cpp_compilation": false,
   "editions": {
     "public": {
       "filename": "BARBCENS.UZE",
@@ -18,6 +18,5 @@
     }
   },
   "hardware_tested": false,
-  "verified_source_tree": "63aa95b64c1bc192366ac5d0af7ef801d2a6990f",
-  "note": "Evidence captured before adding this report and preserving the current GitHub LICENSE; executable and asset sources are unchanged."
+  "note": "Evidence captured before adding this report; executable and asset sources are unchanged."
 }

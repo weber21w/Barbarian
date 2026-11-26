@@ -1,6 +1,8 @@
 # Barbarian source
 
 - Read README.md for the supported build and exact release hashes.
+- Assume this checkout is under uzebox-master/demos/Barbarian. Build inside
+  default/ and use the existing ../../../bin/packrom; do not bundle or rebuild it.
 - Keep edited PNGs as authoritative inputs. Never reimport original artwork.
 - Run `make -C default verify` before publishing: both complete UZE files must match the
   hashes in release/expected.json for this reproduction of build 22.

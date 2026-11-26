@@ -1,7 +1,9 @@
 # Reproduction details
 
 Build with `make -C default verify`, or run `make verify` inside `default/`.
-The only Makefile is `default/Makefile`.
+The only Makefile is `default/Makefile`. Place the checkout at
+`uzebox-master/demos/Barbarian`; it uses `../../../bin/packrom` from `default/`.
+The shared PackRom executable must already exist and support `dependency=`.
 
 The supported release is the pair of complete `.uze` files in
 `release/expected.json`. Byte equality covers the 512-byte header, AVR program,
@@ -19,11 +21,10 @@ Tested package versions on Ubuntu 22.04:
 | Python | `3.10.12` |
 | NumPy | `1.21.5` |
 | Pillow | `11.3.0` |
-| Native g++ | `11.4.0` |
 
 Different compiler versions may produce different AVR code. Verification fails
 if either complete output differs, even when it still fits the ROM budget.
-The native PackRom executable is generated locally from `tools/packrom.cpp`.
+This project uses the existing Uzebox PackRom and does not build a host tool.
 
 The source cleanup removes the legacy Mode 748 backend, original-disk analysis
 tools, unused kernel and SDK code, separate raw audio duplicates, frozen dumps,

@@ -1,8 +1,10 @@
 # Barbarian for Uzebox
 
-This is the self-contained source for the published UzeNet build 22. It builds
+Place this source under `uzebox-master/demos/Barbarian`. It builds
 both editions byte-for-byte, including the header, padded program and embedded
-graphics, effects and music. No other checkout or original Amiga ROM is needed.
+graphics, effects and music, matching published UzeNet build 22. The build uses
+the existing Uzebox tool at `uzebox-master/bin/packrom`; no original Amiga ROM
+is needed.
 
 | Edition | Output | SHA-256 |
 | --- | --- | --- |
@@ -18,10 +20,12 @@ edition and release. [Downloads and release notes](https://uzenet.us/roms.html#b
 
 The verified toolchain is Ubuntu 22.04, AVR GCC 5.4.0,
 AVR binutils 2.26.20160125 and avr-libc 2.0.0. Python asset dependencies are
-pinned in `requirements.txt`. A native C++ compiler builds the included PackRom.
+pinned in `requirements.txt`. The shared `bin/packrom` must already exist and
+support `dependency=` embedding.
 
 ```sh
-sudo apt-get install make g++ gcc-avr binutils-avr avr-libc python3-venv
+cd uzebox-master/demos/Barbarian
+sudo apt-get install make gcc-avr binutils-avr avr-libc python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements.txt
@@ -32,6 +36,7 @@ make -C default verify
 regenerates the assets, builds both editions and checks the complete ROM hashes
 against `release/expected.json`. `make -C default clean` removes generated data
 and build products. You can also run `make` or `make verify` from `default/`.
+From there, PackRom is invoked at `../../../bin/packrom`.
 No generated ROMs,
 object files, listings, packed output assets or duplicate resource archives are
 tracked.
@@ -55,7 +60,7 @@ tracked.
 - `platform/` contains the private Uzebox kernel and optimized SPI video/audio
   runtime. `vendor/uzenet/` contains the required SDK sources and headers.
 - `tools/` contains only the build generators, codecs, assembly outliner,
-  PackRom, budget checker and release verification.
+  budget checker and release verification.
 
 The published network compatibility bytes are pinned in
 `data/network-release.json`. The previous source-tree hash included unused

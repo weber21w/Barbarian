@@ -6,6 +6,9 @@ OUT=ROOT/'default/sfa';OUT.mkdir(parents=True,exist_ok=True)
 (ROOT/'data').mkdir(exist_ok=True)
 KERNEL=ROOT/'platform/kernel';VIDEO=ROOT/'platform/sfa2'
 FW=ROOT/'vendor/uzenet'
+PACKROM=os.environ.get('PACKROM','../../../bin/packrom')
+if not (ROOT/'default'/PACKROM).is_file():
+    raise SystemExit('PackRom is required at ../../../bin/packrom from default/. Place this project under uzebox-master/demos/Barbarian.')
 net=True
 sid=True
 public=os.environ.get('BARB_PUBLIC','0')=='1'
@@ -141,12 +144,11 @@ assert sprite_symbols['barbAsmSpriteHeights']-sprite_symbols['barbAsmSpriteWidth
 (ROOT/'default/Barbarian.lss').write_text(tool('avr-objdump','-d','-z',elf))
 print(tool('avr-size','-C','--mcu=atmega644',elf))
 subprocess.run([sys.executable,str(ROOT/'tools/check_rom_budget.py'),str(elf)],check=True)
-subprocess.run(['g++','-O2','-o',str(ROOT/'default/packrom'),str(ROOT/'tools/packrom.cpp')],check=True)
 data=b''.join((ROOT/'data'/name).read_bytes() for name in ('BARB-GFX.DAT','BARB-SPC.DAT','BARB-SFX.DAT'))
 if sid:data+=(ROOT/'data/BARB-SCORE.DAT').read_bytes()
 (ROOT/'default/BARBDATA.DAT').write_bytes(data)
 uze=ROOT/'default'/rom_name
-print(tool(ROOT/'default/packrom',ROOT/'default/Barbarian.hex',uze,ROOT/'gameinfo.properties'))
+print(tool(PACKROM,ROOT/'default/Barbarian.hex',uze,ROOT/'gameinfo.properties'))
 if sid:
     assert uze.read_bytes()[base:]==(ROOT/'data/BARB-SCORE.DAT').read_bytes(),'Packed score offset mismatch'
 (OUT/'build.json').write_text(json.dumps(dict(video='SFA2 SPI framebuffer',resident_score_bytes=layout_symbols['BARB_SCORE_BYTES'] if sid else 0,music_sd_streaming=False,music_fifo_bytes=int(re.search(r'BARB_MUSIC_FIFO_BYTES\s+(\d+)',(ROOT/'platform/audio.h').read_text())[1]),music_ahead_bytes=layout_symbols['BARB_MUSIC_AHEAD_BYTES'],audio_samples_per_field=262,nominal_audio_hz=15720,physical_audio_hz=28636360/1820,audio='SID resident PCM4+ADPCM2+2' if sid else 'SFA2 ADPCM4+2+2',

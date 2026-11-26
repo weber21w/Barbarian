@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png binary
+*.sid binary
+*.DAT binary
+*.raw binary

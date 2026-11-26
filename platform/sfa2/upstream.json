@@ -1,0 +1,25 @@
+{
+  "source": "C:\\uzebox-master\\demos\\SFA2\\fifo_display",
+  "sha256": {
+    "scanout.s": "8f0e2a70d0f694a5fe9b6ef98c3ef4c267d69bff5de6d6e78f4dd55e514e7573",
+    "videoMode.c": "5309621cb4ed21360d22d3065101b69ff98f0d9a4f607c4f14cae261f8bf4f80",
+    "videoMode.h": "0ab10d18cc8df0bbe92fd1ae803a43436adef013b8cb911d45cfa6008b13d17a",
+    "network_uart.inc": "40256240bbb05e06273b443270269c5261499cac090522460541a9df43c2ce24",
+    "network_uart.S": "4519478df8cad405643366fa1d0f9fba2cd818d4e0900e5b3ba7887662ba3a34",
+    "mixer/three.s": "469dd3c283ea3c545414bcf99f5f5581a9ac1ed34df3d4d157749f44cbd8d73b",
+    "mixer/generated/three_luts.inc": "86f157f639b46222f99da4f7da1c9e0eef78483d59c659daf5200f8cdfc175c8",
+    "scanout_kernel.py": "5317b05a2df1a158c22380d031c66f04767504e4e85dd21aa5d87b8a77f111cf",
+    "stream_diskio.py": "f6a5d27a4b36406fc5594f0af69e3e5a0d13cf6d2ac1af02f9d67e336e4b7ca0"
+  },
+  "adaptations": {
+    "scanout.s": "Removed asset-specific loading/error raster and unused 256-byte scratch allocation. Put optional WalkBlitRow in a discardable section. Normal raster, pixel pipeline, UART slots and timing retained. Linear 107-byte rows now use register address generation and latched base/camera; all 28 camera offsets and both buffers match prior SPI/DAC cycles exactly.",
+    "videoMode.def.h": "160x128 window with render start 68 and the same 264-cycle HSync budget.",
+    "mixer/three.s": "BARB_SID replaces the 24-cycle ADPCM4 music decode slot with padded PCM4 playback. Effect lanes, FIFO contract and 240-cycle HSync timing are retained and tested.",
+    "stream_diskio.py": "Service AudioRefill after successful raw sector reads as well as retries. Separate SID disk/synthesis guards permit FAT traversal servicing without recursive filesystem access.",
+    "mixer/generated/three_luts.inc": "The valid ADPCM planes are unchanged. Existing unreachable tails hold pause/CRC code and the 66-byte palette pair builder; next-state closure is checked."
+  },
+  "adapted_scanout_sha256": "f127ed73e48780e82739dc13f8bebd4144933af4949d087d4d10ef7c5acc7c6f",
+  "adapted_mixer_sha256": "858bc8526c39e2d471f468daa68f32b9a9a77207caa8efc8a0aefaff536cd4cc",
+  "adapted_stream_diskio_sha256": "74b1cc34239e9b5643af49460fb704077bd3db3d723e3e07de587a2988652c1b",
+  "adapted_luts_sha256": "f9057ad5746ef93072867553d4f0db2faf32c202d93c25c7fde1d7693caec7b2"
+}

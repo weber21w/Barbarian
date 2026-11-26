@@ -1,0 +1,13 @@
+/build/
+/default/*
+!/default/Makefile
+/data/*
+!/data/animation-timelines.inc
+!/data/source-round-reset.inc
+!/data/startup-defaults.json
+!/data/network-release.json
+!/data/sfx-dir.inc
+!/data/BARB-SND.DAT
+__pycache__/
+*.pyc
+.venv/

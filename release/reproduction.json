@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "verification_date": "2026-11-25",
+  "method": "Source-only Git index export to a fresh absolute path, make verify, complete UZE SHA-256 comparison",
+  "external_project_file_reads": [],
+  "source_files": 231,
+  "source_bytes": 1064858,
+  "editions": {
+    "public": {
+      "filename": "BARBCENS.UZE",
+      "bytes": 243101,
+      "sha256": "0fbd5fefe28f134fca71c533ff7886e239af5d73c6682dfb0155fd446e27b3cd"
+    },
+    "original": {
+      "filename": "BARBARIN.UZE",
+      "bytes": 243101,
+      "sha256": "18f6150e15c6c70ad0c9d3fbaf0a687de8a354558f4356e02cfdd15b6a9fa944"
+    }
+  },
+  "hardware_tested": false,
+  "verified_source_tree": "63aa95b64c1bc192366ac5d0af7ef801d2a6990f",
+  "note": "Evidence captured before adding this report and preserving the current GitHub LICENSE; executable and asset sources are unchanged."
+}

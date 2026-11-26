@@ -1,0 +1,19 @@
+#pragma once
+#define VMODE_ASM_SOURCE QUOTE(VIDEO_MODE_PATH/scanout.s)
+#define VMODE_C_SOURCE QUOTE(VIDEO_MODE_PATH/videoMode.c)
+#define VMODE_C_PROTOTYPES QUOTE(VIDEO_MODE_PATH/videoMode.h)
+#define VMODE_FUNC walk_video
+#define TILE_WIDTH 8
+#define TILE_HEIGHT 8
+#define SCREEN_TILES_H 20
+#define SCREEN_TILES_V 16
+#define VRAM_TILES_H 20
+#define VRAM_TILES_V 16
+#define VRAM_SIZE 1
+#define VRAM_ADDR_SIZE 1
+#define VRAM_PTR_TYPE unsigned char
+#define SPRITES_ENABLED 0
+#define FIRST_RENDER_LINE 68
+#define FRAME_LINES 128
+#define HSYNC_USABLE_CYCLES 264
+#define CYCLES_PER_PIXELS 9

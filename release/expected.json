@@ -1,0 +1,14 @@
+{
+  "public": {
+    "filename": "BARBCENS.UZE",
+    "sha256": "0fbd5fefe28f134fca71c533ff7886e239af5d73c6682dfb0155fd446e27b3cd",
+    "bytes": 243101,
+    "payload_sha256": "3f1a366561e0b4bd42a67db3e676fe6db6867e4ffb384cdeefdb015db8e08342"
+  },
+  "original": {
+    "filename": "BARBARIN.UZE",
+    "sha256": "18f6150e15c6c70ad0c9d3fbaf0a687de8a354558f4356e02cfdd15b6a9fa944",
+    "bytes": 243101,
+    "payload_sha256": "3f1a366561e0b4bd42a67db3e676fe6db6867e4ffb384cdeefdb015db8e08342"
+  }
+}

@@ -1,5 +1,8 @@
 # Reproduction details
 
+Build with `make -C default verify`, or run `make verify` inside `default/`.
+The only Makefile is `default/Makefile`.
+
 The supported release is the pair of complete `.uze` files in
 `release/expected.json`. Byte equality covers the 512-byte header, AVR program,
 FF padding to the 60 KiB program boundary, and all 181,149 embedded asset bytes.

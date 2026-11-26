@@ -25,20 +25,28 @@ sudo apt-get install make g++ gcc-avr binutils-avr avr-libc python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements.txt
-make verify
+make -C default verify
 ```
 
-`make verify` regenerates the assets, builds both editions and checks the complete
-ROM hashes against `release/expected.json`. `make clean` removes generated data
-and build products. `make -C default` is also supported. No generated ROMs,
+`default/Makefile` is the sole build entry point. `make -C default verify`
+regenerates the assets, builds both editions and checks the complete ROM hashes
+against `release/expected.json`. `make -C default clean` removes generated data
+and build products. You can also run `make` or `make verify` from `default/`.
+No generated ROMs,
 object files, listings, packed output assets or duplicate resource archives are
 tracked.
 
 ## Source layout
 
+- `platform/main.c` is the main game translation unit. It contains `main()`,
+  startup, asset loading and the frame loop. It includes `game.inc`, `render.inc`
+  and the platform fragments; their C code compiles as part of this file.
 - `game.inc`, `barbarian_*.inc` and the state headers are the canonical game
   logic, AI, contact, animation and scoring sources. The former translator
   outputs are now editable source; the obsolete remake translator is omitted.
+  The `.inc` files are included C fragments, not separately compiled objects.
+  Keeping them in one translation unit preserves static helper visibility,
+  compiler optimization and the assembly outliner's established ordering.
 - `data/animation-timelines.inc`, `source-round-reset.inc` and
   `startup-defaults.json` define the animation programs and initial state.
 - `resources/` contains the authoritative edited PNGs, opponent palette values,
